@@ -191,11 +191,41 @@ class ArbolBinarioBusqueda{
 		}
 	}
 	
+	public void buscarDatoMayor() {
+		if(nodoRaiz==null) {
+			System.out.println("No hay elementos");
+		}else {
+			obtenerMayor(nodoRaiz, nodoRaiz.getNodoDer());
+		}
+	}
+	public void obtenerMayor(NodoArbol anterior, NodoArbol actual) {
+		if(actual==null) {
+			System.out.println("El mayor es: " + anterior.getDato());
+		}else {
+			obtenerMayor(anterior.getNodoDer(), actual.getNodoDer());
+		}
+	}
+	
+	public void buscarDatoMenor() {
+		if(nodoRaiz==null) {
+			System.out.println("No hay elementos");
+		}else {
+			obtenerMenor(nodoRaiz,nodoRaiz.getNodoIzq());
+		}
+	}
+	public void obtenerMenor(NodoArbol anterior, NodoArbol actual) {
+		if(actual==null) {
+			System.out.println("El menor es: " + anterior.getDato());
+		}else {
+			obtenerMenor(anterior.getNodoIzq(), actual.getNodoIzq());
+		}
+	}
+	
 }//class
 public class PruebaArbolBinario {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
