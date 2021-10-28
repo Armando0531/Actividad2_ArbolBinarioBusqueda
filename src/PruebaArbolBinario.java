@@ -32,6 +32,14 @@ class NodoArbol{
 		this.nodoDer = nodoDer;
 	}
 	
+	public boolean menorQue(int dato) {
+		return this.dato<dato;
+	}
+
+	public boolean mayorQue(int dato) {
+		return this.dato>dato;
+	}
+	
 	@Override
 	public String toString() {
 		return "NodoArbol [dato=" + dato + "]";
@@ -218,6 +226,29 @@ class ArbolBinarioBusqueda{
 			System.out.println("El menor es: " + anterior.getDato());
 		}else {
 			obtenerMenor(anterior.getNodoIzq(), actual.getNodoIzq());
+		}
+	}
+	
+	public void buscarDato(int dato) {
+		if(nodoRaiz == null) {
+			System.out.println("Elemento no encontrado");
+		}else if(nodoRaiz.menorQue(dato)) {
+			buscar(nodoRaiz.getNodoDer(), dato);
+		}else if(nodoRaiz.mayorQue(dato)) {
+			buscar(nodoRaiz.getNodoIzq(), dato);
+		}else {
+			System.out.println("encontrado");
+		}
+	}
+	public void buscar(NodoArbol raiz, int dato) {
+		if(raiz == null) {
+			System.out.println("Elemento no encontrado");
+		}else if(raiz.menorQue(dato)) {
+			buscar(raiz.getNodoDer(), dato);
+		}else if(raiz.mayorQue(dato)) {
+			buscar(raiz.getNodoIzq(), dato);
+		}else {
+			System.out.println("encontrado");
 		}
 	}
 	
