@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class NodoArbol{
 
 	private NodoArbol nodoIzq;
@@ -256,7 +258,85 @@ class ArbolBinarioBusqueda{
 public class PruebaArbolBinario {
 
 	public static void main(String[] args) {
+		Scanner entrada=new Scanner(System.in);
 		
+		ArbolBinarioBusqueda ab1=new ArbolBinarioBusqueda();
+		String op="";
+		ab1.agregarDato(5);
+		ab1.agregarDato(22);
+		ab1.agregarDato(7);
+		ab1.agregarDato(17);
+		ab1.agregarDato(52);
+		ab1.agregarDato(1);
+		
+		do {
+		System.out.println("Elige una opcion");
+		System.out.println("A-> Insertar nodo");
+		System.out.println("B-> Eliminar nodo");
+		System.out.println("C-> Mostrar nodos");
+		System.out.println("D-> Mostrar dato mayor");
+		System.out.println("E-> Mostrar dato menor");
+		System.out.println("F-> Buscar Dato");
+		System.out.println("G-> Salir");
+		op=entrada.nextLine().toUpperCase();
+		switch (op) {
+		case "A":
+			int d=0;
+			System.out.println("Ingresa el dato que deseas agregar");
+			d=entrada.nextInt();
+			entrada.nextLine();
+			ab1.agregarDato(d);
+			break;
+		case "B":
+			System.out.println("Ingresa el dato que deseas eliminar");
+			int datoEliminar=entrada.nextInt();
+			System.out.println(ab1.eliminarElemento(datoEliminar) ? "Se elimino el dato" : "No se elimino el dato");
+			entrada.nextLine();
+			break;
+		case "C":
+			String op2="";
+			System.out.println("Elige una opcion");
+			System.out.println("1- Preorden");
+			System.out.println("2- Inorden");
+			System.out.println("3- PostOrden");
+			op2=entrada.nextLine();
+			switch (op2) {
+			case "1":
+				ab1.recorridoPreorden(ab1.nodoRaiz);
+				break;
+			case "2":
+				ab1.recorridoInorden(ab1.nodoRaiz);
+				break;
+			case "3":
+				ab1.recorridoPostorden(ab1.nodoRaiz);
+				break;	
+
+			default:
+				break;
+			}
+			System.out.println();
+			break;
+		case "D":
+			ab1.buscarDatoMayor();
+	break;
+		case "E":
+			ab1.buscarDatoMenor();
+			
+	break;
+		case "F":
+			System.out.println("Ingresa el dato que deseas buscar");
+			int datoBuscar=entrada.nextInt();
+			entrada.nextLine();
+			ab1.buscarDato(datoBuscar);
+	break;
+		case "G":
+			System.out.println("Fin del programa");
+	break;
+		default:
+			System.out.println("Elige una opcion disponible");
+			break;
+		}
+		}while(!op.equalsIgnoreCase("G"));
 
 	}
 
