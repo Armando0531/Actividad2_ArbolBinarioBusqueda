@@ -169,6 +169,28 @@ class ArbolBinarioBusqueda{
 
 	}//metodo reemplazar
 	
+	public void recorridoPreorden(NodoArbol nodoRaiz) {
+		if(!(nodoRaiz==null)) {
+			System.out.println(nodoRaiz);
+			recorridoPreorden(nodoRaiz.getNodoIzq());
+			recorridoPreorden(nodoRaiz.getNodoDer());
+		}
+	}
+	public void recorridoInorden(NodoArbol nodoRaiz) {
+		if(!(nodoRaiz==null)) {
+			recorridoInorden(nodoRaiz.getNodoIzq());
+			System.out.print(nodoRaiz.getDato() + " => ");
+			recorridoInorden(nodoRaiz.getNodoDer());
+		}
+	}
+	public void recorridoPostorden(NodoArbol nodoRaiz) {
+		if(!(nodoRaiz==null)) {
+			recorridoPostorden(nodoRaiz.getNodoIzq());
+			recorridoPostorden(nodoRaiz.getNodoDer());
+			System.out.print(nodoRaiz.getDato() + " => ");
+		}
+	}
+	
 }//class
 public class PruebaArbolBinario {
 
